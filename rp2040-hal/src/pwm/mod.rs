@@ -625,6 +625,7 @@ impl<S: AnySlice, C: ChannelId> Channel<S, C> {
 
 impl<S: AnySlice, C: ChannelId> Sealed for Channel<S, C> {}
 
+#[cfg(feature = "embedded-hal-02")]
 impl<S: AnySlice, C: ChannelId> embedded_hal_0_2::PwmPin for Channel<S, C> {
     type Duty = u16;
 
@@ -810,6 +811,8 @@ pub struct SliceDmaWriteCc<S: SliceId, M: ValidSliceMode<S>> {
 /// Type representing DMA access to PWM top register.
 ///
 /// ```no_run
+/// #[cfg(feature = "embedded-hal-02")]
+/// {
 /// use cortex_m::{prelude::*, singleton};
 /// use rp2040_hal::dma::{double_buffer, DMAExt};
 /// use rp2040_hal::pwm::{SliceDmaWrite, Slices, TopFormat};
@@ -837,6 +840,7 @@ pub struct SliceDmaWriteCc<S: SliceId, M: ValidSliceMode<S>> {
 /// let dma_pwm = SliceDmaWrite::from(pwm);
 ///
 /// let dma_conf = double_buffer::Config::new((dma.ch0, dma.ch1), buf, dma_pwm.top);
+/// }
 /// ```
 pub struct SliceDmaWriteTop<S: SliceId, M: ValidSliceMode<S>> {
     slice: PhantomData<S>,
