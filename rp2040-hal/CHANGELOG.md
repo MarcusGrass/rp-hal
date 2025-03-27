@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Updated `pio`
+- Updated `ring`
+- Updated `itertools`
+- Updated `bitfield`
+- Made `embedded_hal_0_2` an optional dependency that's on by default
+
+
 ### MSRV
 
 The Minimum-Supported Rust Version (MSRV) for the next release is 1.82
@@ -30,6 +39,7 @@ The Minimum-Supported Rust Version (MSRV) for the next release is 1.82
 - Fix `embedded-hal::i2c::transaction` support by removing automatic generation of i2c restart between transactions - #827 @jannic
 - Implement `SetDutyCycle` generically on PWM ChannelId - #909 @jannic
 - Improve docs around GPIO proc_int[sef] functions - #908 @jannic
+
 
 ## [0.11.0] - 2024-12-22
 
