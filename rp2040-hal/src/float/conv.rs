@@ -120,6 +120,7 @@ intrinsics! {
     #[alias = __extendsfdf2vfp]
     #[aeabi = __aeabi_f2d]
     extern "C" fn  __extendsfdf2(f: f32) -> f64 {
+        #[expect(unstable_name_collisions)]
         if f.is_not_finite() {
             return f64::from_repr(
                 // Not finite
@@ -137,6 +138,7 @@ intrinsics! {
     #[alias = __truncdfsf2vfp]
     #[aeabi = __aeabi_d2f]
     extern "C" fn __truncdfsf2(f: f64) -> f32 {
+        #[expect(unstable_name_collisions)]
         if f.is_not_finite() {
             let mut repr: u32 =
                 // Not finite

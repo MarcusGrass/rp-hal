@@ -123,6 +123,7 @@ macro_rules! float_impl {
             const BITS: u32 = $bits;
             const SIGNIFICAND_BITS: u32 = $significand_bits;
 
+            #[expect(unstable_name_collisions)]
             const SIGN_MASK: Self::Int = 1 << (Self::BITS - 1);
             const SIGNIFICAND_MASK: Self::Int = (1 << Self::SIGNIFICAND_BITS) - 1;
             const EXPONENT_MASK: Self::Int = !(Self::SIGN_MASK | Self::SIGNIFICAND_MASK);
